@@ -8,7 +8,7 @@
     "ramda": "^0.25.0",
     "react": "^16.1.1",
     "react-dom": "^16.1.1",
-    "react-scripts": "1.0.14",
+    "react-scripts": "5.0.1",
     "react-web3": "^0.4.3",
     "web3": "^1.0.0-beta.26"
   },
