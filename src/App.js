@@ -13,19 +13,19 @@ class App extends Component {
   constructor(props){
     super(props)
 
-    localweb3 = new Web3(window.web3.currentProvider);
+    localweb3 = new Web3(window.ethereum);
 
     var uniswapABI = [{"constant":false,"inputs":[{"name":"tokenAmount","type":"uint256"}],"name":"ownerTokenWithdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"tokenAmount","type":"uint256"}],"name":"ownerTokenDeposit","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"ethAmount","type":"uint256"}],"name":"ownerEthWithdraw","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"sellQuantity","type":"uint256"},{"name":"minimumEth","type":"uint256"},{"name":"timeout","type":"uint256"}],"name":"tokenToEth","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalTokenQuantity","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"minimumTokens","type":"uint256"},{"name":"timeout","type":"uint256"}],"name":"ethToTokens","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"initialTokenQuantity","type":"uint256"}],"name":"initiateUniswap","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"totalEthQuantity","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"tokenAddress","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"invariant","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"ownerEthDeposit","outputs":[],"payable":true,"stateMutability":"payable","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"inputs":[{"name":"_tokenAddress","type":"address"}],"payable":true,"stateMutability":"payable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"tokensPurchased","type":"uint256"},{"indexed":false,"name":"ethSpent","type":"uint256"}],"name":"TokenPurchase","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"buyer","type":"address"},{"indexed":false,"name":"ethPurchased","type":"uint256"},{"indexed":false,"name":"tokensSpent","type":"uint256"}],"name":"EthPurchase","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"}]
-    const uniswapAddress = '0x60e5f3cd0381c501971b6fbbddaa49cfd58a4fa1';
+    const uniswapAddress = '0xD3E51Ef092B2845f10401a0159B2B96e8B6c3D30';
     const uniContract = new localweb3.eth.Contract(uniswapABI, uniswapAddress);
 
     var tokenABI = [{"constant":true,"inputs":[],"name":"mintingFinished","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"name","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_value","type":"uint256"}],"name":"approve","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"totalSupply","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transferFrom","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"decimals","outputs":[{"name":"","type":"uint8"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_amount","type":"uint256"}],"name":"mint","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_subtractedValue","type":"uint256"}],"name":"decreaseApproval","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"}],"name":"balanceOf","outputs":[{"name":"balance","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[],"name":"finishMinting","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[],"name":"owner","outputs":[{"name":"","type":"address"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[],"name":"symbol","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"_to","type":"address"},{"name":"_value","type":"uint256"}],"name":"transfer","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"_spender","type":"address"},{"name":"_addedValue","type":"uint256"}],"name":"increaseApproval","outputs":[{"name":"success","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"_owner","type":"address"},{"name":"_spender","type":"address"}],"name":"allowance","outputs":[{"name":"remaining","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"newOwner","type":"address"}],"name":"transferOwnership","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"anonymous":false,"inputs":[{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"Mint","type":"event"},{"anonymous":false,"inputs":[],"name":"MintFinished","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"previousOwner","type":"address"},{"indexed":true,"name":"newOwner","type":"address"}],"name":"OwnershipTransferred","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"owner","type":"address"},{"indexed":true,"name":"spender","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Approval","type":"event"},{"anonymous":false,"inputs":[{"indexed":true,"name":"from","type":"address"},{"indexed":true,"name":"to","type":"address"},{"indexed":false,"name":"value","type":"uint256"}],"name":"Transfer","type":"event"}]
-    const tokenAddress = '0xca9901076d02f89794262869aad1340bd45d8489';
+    const tokenAddress = '0xaC94Ea989f6955C67200DD67F0101e1865A560Ea';
     const tokContract = new localweb3.eth.Contract(tokenABI, tokenAddress);
 
 
-    this.state = {uniswapAddress: '0x60e5f3cd0381c501971b6fbbddaa49cfd58a4fa1',
-                  tokenAddress: '0xca9901076d02f89794262869aad1340bd45d8489',
+    this.state = {uniswapAddress: '0xD3E51Ef092B2845f10401a0159B2B96e8B6c3D30',
+                  tokenAddress: '0xaC94Ea989f6955C67200DD67F0101e1865A560Ea',
                   uniswapContract: uniContract,
                   tokenContract: tokContract,
                   ethBalance: 0,
@@ -82,8 +82,8 @@ class App extends Component {
 
   getContractInfo(){
     setTimeout(() => {
-      this.ethBuyRate(1);
-      this.tokenBuyRate(1);
+      this.ethBuyRate(0.01);
+      this.tokenBuyRate(0.01);
     }, 1000);
   }
 
@@ -111,22 +111,25 @@ class App extends Component {
   }
 
   approveAllowance(value) {
-    this.state.tokenContract.methods.approve(this.uniswapAddress, value).send(
+    this.state.tokenContract.methods.approve(this.state.uniswapAddress, value).send(
       {from: this.state.currentMaskAddress},
       function(err, txHash) {})
   }
 
-  getMetaMaskAddress() {
+  async getMetaMaskAddress() {
     var self = this;
+    await window.ethereum.enable();
 
     localweb3.eth.getAccounts().then(function(result, error){
+      console.log('result ', result)
       var address = result[0];
       if (address === undefined) {
         console.log('MetaMask locked');
-        alert('Found MetaMask but no account. Please unlock MetaMask and refresh')
+        // alert('Found MetaMask but no account. Please unlock MetaMask and refresh')
       }
       else {
         self.setState({currentMaskAddress: address})
+        console.log("connected homie", address);
       }
 
     });
@@ -159,8 +162,8 @@ class App extends Component {
 
   getAllowance() {
     var self = this;
-
-    this.state.tokenContract.methods.allowance(this.state.currentMaskAddress, this.uniswapAddress).call().then(function(result, error){
+    console.log('test', this.state.currentMaskAddress, this.state.uniswapAddress)
+    this.state.tokenContract.methods.allowance(this.state.currentMaskAddress, this.state.uniswapAddress).call().then(function(result, error){
       var amount = result/10**6
       self.setState({tokenAllowance: amount});
     })
@@ -188,6 +191,12 @@ class App extends Component {
     this.state.uniswapContract.methods.totalTokenQuantity().call().then(function(result, error){
       self.setState({marketTokens: result});
     })
+  }
+
+  async getOnchainData() {
+    await this.getMarketTokens();
+    await this.getMarketEth();
+    await this.getInvarient();
   }
 
   buyTokens() {
@@ -220,18 +229,20 @@ class App extends Component {
     });
   }
 
-  onBuyTokensInputChange(event) {
+  async onBuyTokensInputChange(event) {
     var buyTokensInput = event.target.value;
     if(buyTokensInput && buyTokensInput !== 0){
       this.setState({ minimumTokensPurchased: buyTokensInput });
+      // await this.getOnchainData();
       this.tokenBuyRate(buyTokensInput);
     }
   }
 
-  onBuyEthInputChange(event) {
+  async onBuyEthInputChange(event) {
     var buyEthInput = event.target.value;
     if(buyEthInput && buyEthInput !== 0){
       this.setState({ minimumEthPurchased: buyEthInput });
+      // await this.getOnchainData();
       this.ethBuyRate(buyEthInput);
     }
   }

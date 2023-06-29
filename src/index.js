@@ -16,6 +16,6 @@ function Detect(props) {
 }
 
 ReactDOM.render(
-   <Detect metamask={window.web3} />, document.getElementById('root')
+   <Detect metamask={window.ethereum} />, document.getElementById('root')
 );
 registerServiceWorker();
