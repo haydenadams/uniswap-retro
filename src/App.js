@@ -185,9 +185,9 @@ class App extends Component {
     localweb3.eth.getBlock('latest', function(error, blockInfo) {
         var time = blockInfo.timestamp;
         var maxTime = time + 300; //current block time + 5mins
-
+        
         self.state.uniswapContract.methods.ethToTokens(minTokens, maxTime).send(
-          {from: self.state.currentMaskAddress, value: self.state.tokenCost*10**18},
+          {from: self.state.currentMaskAddress, value: Math.floor(self.state.tokenCost*10**18)},
           function(err, txHash) {})
     });
   }
@@ -202,7 +202,7 @@ class App extends Component {
         var time = blockInfo.timestamp;
         var maxTime = time + 300; //current block time + 5mins
 
-        self.state.uniswapContract.methods.tokenToEth(tokensSold, minWei, maxTime).send(
+        self.state.uniswapContract.methods.tokenToEth(Math.floor(tokensSold), minWei, maxTime).send(
           {from: self.state.currentMaskAddress},
           function(err, txHash) {})
     });
