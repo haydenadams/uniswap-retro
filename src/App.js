@@ -93,16 +93,7 @@ class App extends Component {
     localweb3.eth.net.getNetworkType((err, netId) => {
       switch (netId) {
       case "main":
-      self.setState({networkMessage: 'MetaMask connected to Ethereum Mainet. Switch to Rinkeby and refresh!'});
-      break
-      case "morden":
-      self.setState({networkMessage: 'MetaMask connected to Morden testnet. Switch to Rinkeby and refresh!'});
-      break
-      case "kovan":
-      self.setState({networkMessage: 'MetaMask connected to Kovan testnet. Switch to Rinkeby and refresh!'});
-      break
-      case "ropsten":
-      self.setState({networkMessage: 'MetaMask connected to Ropstein testnet. Switch to Rinkeby and refresh!'})
+      self.setState({networkMessage: 'MetaMask connected to Ethereum Mainet. Switch to Sepolia and refresh!'});
       break
       default:
       console.log('Connected to ' + netId);
@@ -148,12 +139,6 @@ class App extends Component {
   getTokenBalance() {
     var self = this;
 
-    // tokenContract.methods.balanceOf(this.state.currentMaskAddress).call().then(function(result, error){
-    //   var amount = result/10**6
-    //   console.log(result);
-    //   self.setState({tokenBalance: amount});
-    // })
-
     this.state.tokenContract.methods.balanceOf(this.state.currentMaskAddress).call(function(error, balance) {
       var amount = balance/10**6;
       self.setState({tokenBalance: amount});
@@ -193,12 +178,6 @@ class App extends Component {
     })
   }
 
-  async getOnchainData() {
-    await this.getMarketTokens();
-    await this.getMarketEth();
-    await this.getInvarient();
-  }
-
   buyTokens() {
     var self = this;
     var minTokens = this.state.minimumTokensPurchased
@@ -229,20 +208,18 @@ class App extends Component {
     });
   }
 
-  async onBuyTokensInputChange(event) {
+  onBuyTokensInputChange(event) {
     var buyTokensInput = event.target.value;
     if(buyTokensInput && buyTokensInput !== 0){
       this.setState({ minimumTokensPurchased: buyTokensInput });
-      // await this.getOnchainData();
       this.tokenBuyRate(buyTokensInput);
     }
   }
 
-  async onBuyEthInputChange(event) {
+  onBuyEthInputChange(event) {
     var buyEthInput = event.target.value;
     if(buyEthInput && buyEthInput !== 0){
       this.setState({ minimumEthPurchased: buyEthInput });
-      // await this.getOnchainData();
       this.ethBuyRate(buyEthInput);
     }
   }
@@ -306,7 +283,7 @@ class App extends Component {
     return (
       <div className="App">
         <Title />
-        <div className="noICO">UNI is an ERC20 test token. This is not an ICO.</div>
+        <div className="noICO">UNI is an ERC20 test token on Sepolia. This is not an ICO.</div>
         <img src={unicorn} className="unicorn" alt="unicorn"/>
         <img src={ethLogo} className="ethLogo" alt = "ethLogo"/>
         <div className="Warning">{this.state.networkMessage}</div>
