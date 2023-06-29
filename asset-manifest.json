@@ -1,10 +1,17 @@
 {
-  "main.css": "static/css/main.b26bd132.css",
-  "main.css.map": "static/css/main.b26bd132.css.map",
-  "main.js": "static/js/main.40e14755.js",
-  "main.js.map": "static/js/main.40e14755.js.map",
-  "static/media/LoveloLineBold.otf": "static/media/LoveloLineBold.ab3fad68.otf",
-  "static/media/background.jpg": "static/media/background.50be49eb.jpg",
-  "static/media/ethLogo.png": "static/media/ethLogo.07b99bde.png",
-  "static/media/unicornNoBackground.png": "static/media/unicornNoBackground.f762ece1.png"
+  "files": {
+    "main.css": "./static/css/main.5a83e69d.css",
+    "main.js": "./static/js/main.8f377a5c.js",
+    "static/media/unicornNoBackground.png": "./static/media/unicornNoBackground.cb16a04eb6d3b26c68cc.png",
+    "static/media/background.jpg": "./static/media/background.bd2af0dc0b76efb85d08.jpg",
+    "static/media/ethLogo.png": "./static/media/ethLogo.0a0309da24a7ba8c0de1.png",
+    "static/media/LoveloLineBold.otf": "./static/media/LoveloLineBold.bd9d8b0a9d0e6a0f74a4.otf",
+    "index.html": "./index.html",
+    "main.5a83e69d.css.map": "./static/css/main.5a83e69d.css.map",
+    "main.8f377a5c.js.map": "./static/js/main.8f377a5c.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.5a83e69d.css",
+    "static/js/main.8f377a5c.js"
+  ]
 }
