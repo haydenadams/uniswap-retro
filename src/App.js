@@ -186,7 +186,7 @@ class App extends Component {
         var time = blockInfo.timestamp;
         var maxTime = time + 300; //current block time + 5mins
         
-        self.state.uniswapContract.methods.ethToTokens(minTokens, maxTime).send(
+        self.state.uniswapContract.methods.ethToTokens(Math.floor(minTokens), maxTime).send(
           {from: self.state.currentMaskAddress, value: Math.floor(self.state.tokenCost*10**18)},
           function(err, txHash) {})
     });
